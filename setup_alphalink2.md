@@ -10,6 +10,7 @@ pip install https://github.com/dptech-corp/Uni-Core/releases/download/0.0.3/unic
 conda install -y -c conda-forge openmm==7.7.0 pdbfixer biopython==1.81
 conda install -y -c bioconda hmmer hhsuite==3.3.0 kalign2
 pip install tensorflow-cpu==2.16.1
+pip install -U "jax[cuda12]"
 ```
 # Set up alphafold
 ```
