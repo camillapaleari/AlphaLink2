@@ -1,4 +1,37 @@
-# Create alphalink envirorment
+## Step 1: Install Miniconda
+
+1. **Create a directory for Miniconda**:
+    ```bash
+    mkdir -p ~/miniconda3
+    ```
+
+2. **Download the latest version of Miniconda**:
+    ```bash
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+    ```
+
+3. **Run the install script**:
+    ```bash
+    bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+    ```
+
+4. **Delete the install script**:
+    ```bash
+    rm -rf ~/miniconda3/miniconda.sh
+    ```
+
+5. **Add a conda initialize to your bash**:
+    ```bash
+    ~/miniconda3/bin/conda init bash
+    ```
+
+6. **Verify the installation**:
+    ```bash
+    conda list
+    ```
+
+
+## Create alphalink envirorment
 ```bash
 conda create --name alphalink -c conda-forge python=3.10
 conda activate alphalink
@@ -23,7 +56,7 @@ wget --no-check-certificate https://git.scicore.unibas.ch/schwede/openstructure/
 cp stereo_chemical_props.txt $CONDA_PREFIX/lib/python3.10/site-packages/`ls $CONDA_PREFIX/lib/python3.10/site-packages/ | grep alphafold`/alphafold/common/
 cd ..
 ```
-# Clone aplhalink2 repo
+## Clone aplhalink2 repo
 ```
 git clone https://github.com/Rappsilber-Laboratory/AlphaLink2.git
 cd AlphaLink2
@@ -37,11 +70,11 @@ https://zenodo.org/records/8007238
 
 #### finish of the setting up. Now you have to do this two rows every time you want to predict 
 
-# generate dictionary of crosslinks (check the crosslinks input format from the readme )
+## generate dictionary of crosslinks (check the crosslinks input format from the readme )
 ```
 python generate_crosslink_pickle.py --csv /path/to/the/crosslinks.csv --output /path/to/the/crosslinks/crosslinks.pkl.gz
 ```
-# run prediction
+## run prediction
 ```
 sbatch run_alphalink.sh /path/to/file/fasta.fasta /path/to/the/crosslinks/crosslinks.pkl.gz /output/path/ /path/to/weights/AlphaLink-Multimer_SDA_v3.pt  /cluster/project/alphafold/ 2020-05-01
 ```
